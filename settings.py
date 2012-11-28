@@ -3,7 +3,7 @@
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
-
+HOME_PAGE_URL = 'http://127.0.0.1:8000/'#主页的URL
 ADMINS = (
     # ('Your Name', 'your_email@domain.com'),
 )
@@ -46,8 +46,10 @@ USE_L10N = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = ''
-
+#MEDIA_ROOT = ''
+import os
+PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))#项目的根目录地址
+MEDIA_ROOT = os.path.join(PROJECT_PATH,'static')
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
@@ -71,9 +73,11 @@ TEMPLATE_LOADERS = (
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    #'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.csrf.CsrfResponseMiddleware',
     #'django.contrib.auth.middleware.AuthenticationMiddleware',
     #'django.contrib.messages.middleware.MessageMiddleware',
+    'diary.mydiary.auth.middleware.AuthenticationMiddleware',
     'django.middleware.locale.LocaleMiddleware',#加上这条，让admin支持本地语言
 )
 
@@ -95,4 +99,5 @@ INSTALLED_APPS = (
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+    'diary.mydiary',
 )

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="ua-windows ua-webkit">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+{% block title %}{% endblock %}
+</title>
+<link href="/static/css/base.css" rel="stylesheet" type="text/css" media="all" />
+<link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
+{% block headerlink %}{% endblock %}
+</head>
+
+<body>
+<div class="container">
+
+<div class="header">
+	<div class="logo">
+
+	</div>
+</div>
+
+<div class="content">
+<div style="height:1px;"></div>
+{% block content %}{% endblock %}
+</div>
+
+<div class="footer">
+    <span class="fleft">
+        &copy; 2012 restran, all rights reserved
+    </span>
+    
+</div>
+
+</div>
+</body>
+</html>
