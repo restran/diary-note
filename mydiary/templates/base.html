@@ -9,18 +9,11 @@
 <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
 {% block headerlink %}{% endblock %}
 </head>
-
 <body>
 <div class="container">
-
 <div class="header">
-
 	<div class="logo">
 	</div>
-	
-
-
-	
 	<div class="account">
 		<ul class="menu green-link">
 			{% if request.user.is_authenticated %}
@@ -30,24 +23,19 @@
 			<li><a href="http://127.0.0.1:8000/accounts/login/">登录</a></li>
 			<li><a href="http://127.0.0.1:8000/accounts/register/">注册</a></li>
 			{% endif %}
-
 		</ul>
 	</div>
-
 </div>
 
 <div class="content">
 <div style="height:1px;"></div>
 {% block content %}{% endblock %}
 </div>
-
 <div class="footer">
     <span class="fleft">
         &copy; 2012 restran, all rights reserved
     </span>
-    
 </div>
-
 </div>
 </body>
 </html>

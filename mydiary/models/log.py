@@ -10,9 +10,9 @@ from diary.mydiary.models.user import User
 class Log(models.Model):
     user = models.ForeignKey(User)
     content = models.TextField()
-    content_update_flag = models.BooleanField()#是否重新编辑过内容
-    date_create = models.DateTimeField(auto_now_add=True)
-    date_update = models.DateTimeField(auto_now_add=True)
+    content_update_flag = models.BooleanField(default=False)#是否重新编辑过内容
+    date_created = models.DateTimeField(auto_now_add=True)
+    date_updated = models.DateTimeField(auto_now_add=True)
     
     def __unicode__(self):
         return self.id

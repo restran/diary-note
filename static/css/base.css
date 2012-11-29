@@ -3,7 +3,7 @@
 body 
 {
 	font-family:Tahoma,Geneva,sans-serif;
-	background:#FFF;
+	background:#FCFBF9;
 	color:#555;
 }
 
@@ -34,80 +34,6 @@ body
 /*去除IE浏览器中带图片链接的边框*/
 a img{border: none;}
 a img:hover{border: none;}
-
-.searchform
-{
-	margin-left:10px;
-	margin-right:0px;
-	margin-top:0px;
-	/*border:1px dashed #EE0;*/
-	float:left;
-	width:320px;
-	height:32px;
-	line-height:32px;
-	display: block;
-}
-.box-srh
-{
-	/*width: 270px;
-	padding: 5px;
-	height: 18px;
-	font-size: 14px;
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
-	border-radius: 3px;
-	border: 1px solid #C9C9C9;*/
-	width:290px;
-	height:16px;
-	line-height:16px;
-	font-size:14px;
-	padding:6px 6px;
-	border: 1px solid gainsboro;
-	border-radius: 3px;
-}
-.btn-srh
-{
-	width:23px;
-	height:23px;
-	padding:3px 2px;
-	border:0;
-	background:transparent url(/static/img/btn-srh.gif) no-repeat;
-	cursor:pointer;
-	margin-left:-32px;
-}
-/*
-.btn-srh
-{
-	margin-left:5px;
-	cursor: pointer;
-	font-size: 14px;
-	padding: 5px 15px;
-	border-radius: 3px;
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
-	
-	color: #3fa156;
-	background-color: #f3faf3;
-	border: 1px solid #84b76c;
-}
-
-.btn-srh:hover
-{
-	background-color: #ffffff;
-	border-color: #6AAD54;
-}
-*/
-
-.nav 
-{
-	font-size:14px;
-	float:left;
-	margin-left:5px;
-	margin-top:0px;
-	/*border:1px dashed #E0E;*/
-	position:relative;
-	bottom:0px;
-}
 
 .account
 {
@@ -142,6 +68,7 @@ a img:hover{border: none;}
 	width:950px;
 	/*border:1px dashed #0EE;*/
 }
+
 
 .content-area
 {
@@ -337,4 +264,82 @@ h2
 	color:#595959;
 	padding: 0 0 15px 0;
 	line-height: 1.1;
+}
+
+.btn-submit
+{
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: bold;
+	padding: 6px 26px;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+
+.btn-submit:hover
+{
+	background-color: #4FCA6C;
+	border-color: #6AAD54;
+}
+.enabled
+{
+	color: white;
+	background: #3FA156;
+	border: 1px solid #528641;
+}
+
+.basic-input
+{
+	width: 200px;
+	padding: 5px;
+	height: 18px;
+	font-size: 14px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	border: 1px solid #C9C9C9;
+}
+
+.basic-select
+{
+	width: 100px;
+	padding: 5px;
+	height: 30px;
+	font-size: 14px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	border: 1px solid #C9C9C9;
+}
+
+.mgn-top10
+{
+	margin-top:10px;
+}
+
+.mgn-btm10
+{
+	margin-bottom:10px;
+}
+
+.mgn-top20
+{
+	margin-top:20px;
+}
+
+.mgn-btm20
+{
+	margin-bottom:20px;
+}
+
+.mgn-tb20
+{
+	margin-top:20px;
+	margin-bottom:20px;
+}
+.mgn-tb10
+{
+	margin-top:10px;
+	margin-bottom:10px;
 }

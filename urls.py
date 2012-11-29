@@ -26,7 +26,9 @@ urlpatterns += patterns('diary.mydiary.views',#第一个参数可设置公共前
     (r'^accounts/logout/$', 'accounts.logout'),
     (r'^accounts/register/$', 'accounts.register'),
     (r'^accounts/profile/$', 'accounts.profile'),
-    (r'^accounts/editavatar/$', 'accounts.editavatar'),
     (r'^accounts/editpassword/$', 'accounts.editpassword'),
 )
 
+urlpatterns += patterns('diary.mydiary.views',#第一个参数可设置公共前缀
+    (r'^write/$', 'diary.write'),
+)

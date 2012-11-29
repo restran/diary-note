@@ -6,20 +6,12 @@ Created on 2012-11-28
 '''
 
 #必须导入的模块
-from diary.mydiary.auth.forms import UserCreationForm, UserInfoEditForm, PasswordChangeForm
 from diary.mydiary import auth
+from diary.mydiary.auth.forms import UserCreationForm, UserInfoEditForm, PasswordChangeForm
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
-from diary import settings 
-
+from diary import settings
 from django.views.decorators.csrf import csrf_protect
-
-#注册时检查用户名是否已存在
-def reg_check_username(request):  
-    pass
-
-def reg_check_email(request):
-    pass
 
 #登录
 @csrf_protect
