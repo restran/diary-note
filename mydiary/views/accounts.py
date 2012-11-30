@@ -6,8 +6,8 @@ Created on 2012-11-28
 '''
 
 #必须导入的模块
-from diary.mydiary import auth
 from diary.mydiary.auth.forms import UserCreationForm, UserInfoEditForm, PasswordChangeForm
+from diary.mydiary import auth
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from diary import settings

@@ -30,5 +30,7 @@ urlpatterns += patterns('diary.mydiary.views',#第一个参数可设置公共前
 )
 
 urlpatterns += patterns('diary.mydiary.views',#第一个参数可设置公共前缀
-    (r'^write/$', 'diary.write'),
+    (r'^diary/write/$', 'diarybook.write'),
+    (r'^diary/past/$', 'diarybook.past'),
+    (r'^', 'home.error_404'),
 )

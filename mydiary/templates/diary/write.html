@@ -3,20 +3,20 @@
 {% block headerlink %}
 <link href="/static/css/diary.css" rel="stylesheet" type="text/css" media="all" />
 {% endblock %}
-
 {% block content %}
 <div class="d-contentwrap">
 	<div class="d-content">
 		<div class="entry mgn-btm20">
-			<div>{{ current_time }}</div>
-			<div class="mgn-top20">
-			<form name="writeform" method="post" action="">{% csrf_token %}
-				<textarea name="content" rows="10" class="text basic-input" id="commentContent" style="width:550px;height:auto" placeholder="" value=""></textarea>
+			<div class="tab">{{ current_log_count }}</div>
+			<div class="time">{{ current_time }}</div>
+			<div class="mgn-top10">
+			<form name="writeform" method="post" action="http://127.0.0.1:8000/diary/write/">{% csrf_token %}
+				<textarea name="textcontent" rows="10" class="text basic-input" id="textcontent" style="width:550px;height:auto" placeholder="" value=""></textarea>
+				<div class="bn-flat cfright mgn-top20">
+				<input type="submit" value="加上去" id="addlog" class="btn-white-submit" style="font-size:12px;font-weight:bold;" title="加上去">
+				</div>	
 			</form>
 			</div>
-		</div>
-		<div class="bn-flat cfright">
-	<input type="submit" name="addComment" value="加上去" id="addComment" class="btn-white-submit" style="font-size:12px;font-weight:bold;" title="加上去">
 		</div>
 	</div>
 </div>

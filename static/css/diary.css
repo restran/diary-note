@@ -78,5 +78,29 @@ background-image: -moz-linear-gradient(-90deg,#F8F8F8 0,#DDD 100%);
 background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0,#F8F8F8),color-stop(1,#DDD));
 }
 
+.tab {
+position: absolute;
+left: -37px;
+background: url(/static/img/bg_tab.gif) no-repeat;
+height: 26px;
+width: 37px;
+text-align: center;
+font-weight: bold;
+font-size: 0.85em;
+padding-top: 4px;
+color: #799AB2;
+text-shadow: 0 1px #EDF6FE;
+}
 
+.time{
+ont-family: georgia;
+font-size: 1.18em;
+/*border-bottom: 1px solid #E5E5E5;*/
+padding: 0 0 22px 0;
+color: #A41100;
+}
+
+.border_line {
+border-bottom: 1px solid #E5E5E5;
+}
 

@@ -13,10 +13,13 @@
 <div class="container">
 <div class="header">
 	<div class="logo">
+	<a href="http://127.0.0.1:8000"><img src="/static/img/logo.png" alt="时光里"></a>
 	</div>
 	<div class="account">
 		<ul class="menu green-link">
 			{% if request.user.is_authenticated %}
+			<li><a href="http://127.0.0.1:8000/diary/write/">写日志</a></li>
+			<li><a href="http://127.0.0.1:8000/diary/past/">过往日志</a></li>
 			<li><a href="http://127.0.0.1:8000/accounts/profile/">{{ request.user }}的帐号</a></li>
 			<li><a href="http://127.0.0.1:8000/accounts/logout/">登出</a></li>
 			{% else %}

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}过往日志{% endblock %}
+{% block headerlink %}
+<link href="/static/css/diary.css" rel="stylesheet" type="text/css" media="all" />
+{% endblock %}
+{% block content %}
+<div class="d-contentwrap">
+	<div class="d-content">
+		<div class="entry-list">
+			{% for log in log_list %}
+			<div class="entry mgn-btm20">
+				<div class="tab">{{ log.no }}</div>
+				<div class="time">{{ log.date_posted_str }}</div>
+				<div class="text">{{ log.content }}</div>
+			</div>
+			{% if log.no > 1 %}
+			<div class="border_line mgn-btm30 mgn-top30"></div>
+			{% endif %}
+			{% endfor %}
+		</div>
+	</div>
+</div>
+{% endblock %}

@@ -4,7 +4,15 @@ Created on 2012-11-28
 
 @author: Neil
 '''
+'''
+from user import User
+from log import Log
 
+__all__ = [    
+           'User', 'Log'
+        ]
+
+'''
 import django.db.models        
 import sys                     
 
