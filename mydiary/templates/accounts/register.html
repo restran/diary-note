@@ -1,5 +1,5 @@
 {% extends "base_basic.html" %}
-{% block title %}欢迎加入diarylife{% endblock %}
+{% block title %}欢迎加入时光里{% endblock %}
 
 {% block headerlink %}
 <link href="/static/css/login_reg.css" rel="stylesheet" type="text/css" media="all" />
@@ -8,14 +8,14 @@
 
 {% block content %}
 <div class="content-area">
-<h1>欢迎加入diarylife</h1>
+<h1>欢迎加入时光里</h1>
 {% if register_success %}
-<p style="margin-top:20px;color:#060;font-size:20px;">{{ username }}，你已成功加入diarylife :)</p>
+<p style="margin-top:20px;color:#060;font-size:20px;">{{ username }}，你已成功加入时光里 :)</p>
 <span class="blue-link" style="font-size:14px;">
-<a href="http://127.0.0.1:8000/accounts/login/">前往登录页</a>
+<a href="{{ request.HOME_PAGE_URL }}accounts/login/">前往登录页</a>
 </span>
 {% else %}
-<form name="form" method="post" action="http://127.0.0.1:8000/accounts/register/">{% csrf_token %}
+<form name="form" method="post" action="{{ request.HOME_PAGE_URL }}accounts/register/">{% csrf_token %}
 
     <div class="item">
     <label>邮箱</label>
@@ -23,7 +23,7 @@
     {% if email_hasExist %}
     <span class="validate-error">该邮箱已经注册过了</span>
     {% else %}
-    <span class="tip">用来登录diarylife</span>
+    <span class="tip">用来登录时光里</span>
     {% endif %}
     </div>
 
@@ -50,6 +50,16 @@
     <span class="validate-error">该名号已经被使用了</span>
     {% else %}
     <span class="tip">中、英文均可，最长14个英文或7个汉字</span>
+    {% endif %}
+    </div>
+	
+	<div class="item">
+    <label>邀请码</label>
+    <input id="invite_code" name="invite_code" type="text" class="basic-input" maxlength="60" value={{ p_invite_code }}>
+    {% if inv_code_does_not_exist %}
+    <span class="validate-error">邀请码无效</span>
+    {% else %}
+    <span class="tip">邀请注册中</span>
     {% endif %}
     </div>
 

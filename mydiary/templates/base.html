@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>
-{% block title %}diarylife{% endblock %}
+{% block title %}时光里{% endblock %}
 </title>
 <link href="/static/css/base.css" rel="stylesheet" type="text/css" media="all" />
 <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
@@ -13,18 +13,18 @@
 <div class="container">
 <div class="header">
 	<div class="logo">
-	<a href="http://127.0.0.1:8000"><img src="/static/img/logo.png" alt="时光里"></a>
+	<a href="{{ request.HOME_PAGE_URL }}"><img src="/static/img/logo.png" alt="时光里"></a>
 	</div>
 	<div class="account">
 		<ul class="menu green-link">
 			{% if request.user.is_authenticated %}
-			<li><a href="http://127.0.0.1:8000/diary/write/">写日志</a></li>
-			<li><a href="http://127.0.0.1:8000/diary/past/">过往日志</a></li>
-			<li><a href="http://127.0.0.1:8000/accounts/profile/">{{ request.user }}的帐号</a></li>
-			<li><a href="http://127.0.0.1:8000/accounts/logout/">登出</a></li>
+			<li><a href="{{ request.HOME_PAGE_URL }}diary/write/">写日志</a></li>
+			<li><a href="{{ request.HOME_PAGE_URL }}diary/past/">过往日志</a></li>
+			<li><a href="{{ request.HOME_PAGE_URL }}accounts/profile/">{{ request.user }}的帐号</a></li>
+			<li><a href="{{ request.HOME_PAGE_URL }}accounts/logout/">登出</a></li>
 			{% else %}
-			<li><a href="http://127.0.0.1:8000/accounts/login/">登录</a></li>
-			<li><a href="http://127.0.0.1:8000/accounts/register/">注册</a></li>
+			<li><a href="{{ request.HOME_PAGE_URL }}accounts/login/">登录</a></li>
+			<li><a href="{{ request.HOME_PAGE_URL }}accounts/register/">注册</a></li>
 			{% endif %}
 		</ul>
 	</div>

@@ -51,7 +51,7 @@ def past(request):
         return HttpResponseRedirect(settings.HOME_PAGE_URL)#跳转到主页面
     
     log_count = Log.objects.filter(user=request.user).count()
-    log_list = Log.objects.filter(user=request.user).order_by('-date_posted')#加-号表示逆向排序
+    log_list = Log.objects.filter(user=request.user).order_by('-date_posted')[0:15]#加-号表示逆向排序
     for log in log_list:
         log.no= log_count
         log.date_posted_str = log.date_posted.strftime('%Y, %B %d, %A, %H:%M')

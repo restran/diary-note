@@ -13,6 +13,7 @@ from django import forms
 from django.utils.translation import ugettext_lazy as _
 from django.utils.http import int_to_base36
 from diary.mydiary.models import User
+from diary.mydiary.models import Invite_Code
 
 class UserInfoEditForm(forms.ModelForm):
     '''
@@ -55,11 +56,13 @@ class UserCreationForm(forms.ModelForm):
         error_messages = {'invalid': _(u"仅可以使用中文或英文")})
     password1 = forms.CharField(widget=forms.PasswordInput)
     password2 = forms.CharField(widget=forms.PasswordInput)
-
+    invite_code = forms.CharField(max_length=24)
+    
     def __init__(self, *args, **kwargs):
         self.name_hasExist = False
         self.emial_hasExist = False
         self.password_notMatch = True
+        self.inv_code_validate_error = False
         super(forms.ModelForm, self).__init__(*args,**kwargs)#必须调用父类初始化其它数据
         
     class Meta:
@@ -95,6 +98,21 @@ class UserCreationForm(forms.ModelForm):
         
         self.emial_hasExist = True
         raise forms.ValidationError(_(u"该邮箱已存在"))
+    
+    def clean_invite_code(self):
+        inv_code = self.cleaned_data["invite_code"]
+        try:
+            code = Invite_Code.objects.get(code=inv_code)
+            if code.is_actived == True:
+                code.used_count += 1
+                code.is_actived = False
+                code.save()
+                return inv_code
+        except Invite_Code.DoesNotExist:
+            pass
+        
+        self.inv_code_validate_error = True
+        raise forms.ValidationError(_(u"邀请码无效"))
         
     def save(self, commit=True):
         user = super(UserCreationForm, self).save(commit=False)
@@ -232,7 +250,6 @@ class SetPasswordForm(forms.Form):
         self.user.set_password(self.cleaned_data['new_password1'])
         if commit:
             self.user.save()
-            self.user.save(using='remote')#将用户数据保存到远程数据库
         return self.user
 
 class PasswordChangeForm(SetPasswordForm):

@@ -27,9 +27,9 @@ def login(request):
             return HttpResponseRedirect(settings.HOME_PAGE_URL)#跳转到主页
         else:
             # 返回出错信息
-            return render_to_response("accounts/login.html", {'login_failed':True, 'p_email':email})
+            return render_to_response("accounts/login.html", {'request':request, 'login_failed':True, 'p_email':email})
     else:
-        return render_to_response("accounts/login.html", {'login_failed':False})
+        return render_to_response("accounts/login.html", {'request':request, 'login_failed':False})
 
 #登出
 def logout(request):
@@ -39,6 +39,9 @@ def logout(request):
 #注册
 @csrf_protect
 def register(request):
+    from diary.mydiary.models import Invite_Code
+    code = Invite_Code()
+    code.gen_invit_code()
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
@@ -46,14 +49,15 @@ def register(request):
             user.save()
 
             return render_to_response("accounts/register.html",
-                {'register_success':True, 'username':user.name})#注册成功
+                {'request':request, 'register_success':True, 'username':user.name})#注册成功
         else:
             return render_to_response("accounts/register.html",
-                {'register_success':False, 'email_hasExist':form.emial_hasExist, 
+                {'request':request, 'register_success':False, 'email_hasExist':form.emial_hasExist, 
                 'name_hasExist':form.name_hasExist, 'password_notMatch':form.password_notMatch,
-                'p_email':request.POST['email'],'p_name':request.POST['name']})
+                'inv_code_does_not_exist':form.inv_code_validate_error,'p_email':request.POST['email'],
+                'p_invite_code':request.POST['invite_code'],'p_name':request.POST['name']})
     else:
-        return render_to_response("accounts/register.html", {'register_success':False})
+        return render_to_response("accounts/register.html", {'request':request, 'register_success':False})
     
 
 #查看个人资料

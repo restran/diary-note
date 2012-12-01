@@ -1,5 +1,5 @@
 {% extends "base_basic.html" %}
-{% block title %}登录diarylife{% endblock %}
+{% block title %}登录时光里{% endblock %}
 
 {% block headerlink %}
 <link href="/static/css/login_reg.css" rel="stylesheet" type="text/css" media="all" />
@@ -8,8 +8,8 @@
 
 {% block content %}
 <div class="content-area">
-<h1>登录diarylife</h1>
-<form name="loginform" method="post" action="http://127.0.0.1:8000/accounts/login/">{% csrf_token %}
+<h1>登录时光里</h1>
+<form name="loginform" method="post" action="{{ request.HOME_PAGE_URL }}accounts/login/">{% csrf_token %}
 
     {% if login_failed %}
     <div class="item">
@@ -32,7 +32,7 @@
     
     <div class="item"  style="margin-top:25px">
     <label>&nbsp;</label>
-    <input type="submit" value="登录" id="button" class="btn-submit enabled" title="登录绿光">
+    <input type="submit" value="登录" id="button" class="btn-submit enabled" title="登录时光里">
     </div>
 
 </form>

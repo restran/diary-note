@@ -10,7 +10,7 @@
 			<div class="tab">{{ current_log_count }}</div>
 			<div class="time">{{ current_time }}</div>
 			<div class="mgn-top10">
-			<form name="writeform" method="post" action="http://127.0.0.1:8000/diary/write/">{% csrf_token %}
+			<form name="writeform" method="post" action="{{ request.HOME_PAGE_URL }}diary/write/">{% csrf_token %}
 				<textarea name="textcontent" rows="10" class="text basic-input" id="textcontent" style="width:550px;height:auto" placeholder="" value=""></textarea>
 				<div class="bn-flat cfright mgn-top20">
 				<input type="submit" value="加上去" id="addlog" class="btn-white-submit" style="font-size:12px;font-weight:bold;" title="加上去">

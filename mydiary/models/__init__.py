@@ -19,7 +19,7 @@ import sys
 appname = 'mydiary'
 from user import User
 from log import Log
-
+from invite_code import Invite_Code
 __all__ = []     
 
 for decl in globals().values():
