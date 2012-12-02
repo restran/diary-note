@@ -92,7 +92,7 @@ def past_year_month(request, year, month):
     
     log_list = Log.objects.filter(user=request.user, date_posted__year=int(year),date_posted__month=int(month)).order_by('-date_posted')[0:15]#加-号表示逆向排序
     for log in log_list:
-        log.date_posted_str = log.date_posted.strftime('%Y, %m, %d, %A, %H:%M')
+        log.date_posted_str = log.date_posted.strftime('%Y/%m/%d, %A, %H:%M')
     
     archive_list = get_past_archive(request.user)
     return render_to_response("diary/past.html", {'request':request, 'log_list':log_list, 'archive_list':archive_list})
