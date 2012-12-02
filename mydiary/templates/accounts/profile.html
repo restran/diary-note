@@ -19,11 +19,11 @@
     <label>名号:</label>
     <input id="name" name="name" type="text" class="basic-input" style="width:150px" maxlength="60" value={{user.name}}>
     {% if name_edited %}
-    	{% if name_hasExist %}
-    	<span class="validate-error">该名号已经被使用了</span>
-    	{% endif %}
-    {% else %}
-    <span class="tip">中、英文均可，最长14个英文或7个汉字</span>
+		{% if form_val.name_val_error %}
+		<span class="validate-error">{{form_val.name_error}}</span>
+		{% else %}
+		<span class="tip">中、英文均可，最长14个英文或7个汉字</span>
+		{% endif %}
     {% endif %}
     </div>
 

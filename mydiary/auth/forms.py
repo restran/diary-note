@@ -23,7 +23,7 @@ class UserInfoEditForm(forms.ModelForm):
     
     def __init__(self, user, *args, **kwargs):
         self.user = user
-        self.name_hasExist = False
+        self.name_val_error = False
         super(forms.ModelForm, self).__init__(*args, **kwargs)
         
     class Meta:
@@ -37,8 +37,9 @@ class UserInfoEditForm(forms.ModelForm):
         except User.DoesNotExist:
             return name
 
-        self.name_hasExist = True
-        raise forms.ValidationError(_(u"该名号已存在"))
+        self.name_val_error = True
+        self.name_error = u'该名号已经被使用了'
+        raise forms.ValidationError(_(u"该名号已经被使用了"))
     
     def save(self, commit=True):
         self.user.name = self.cleaned_data["name"]
@@ -59,10 +60,12 @@ class UserCreationForm(forms.ModelForm):
     invite_code = forms.CharField(max_length=24)
     
     def __init__(self, *args, **kwargs):
-        self.name_hasExist = False
-        self.emial_hasExist = False
-        self.password_notMatch = True
-        self.inv_code_validate_error = False
+        self.name_val_error = False
+        self.email_val_error = False
+        self.password1_val_error = False
+        self.password2_val_error = False
+        self.inv_code_val_error = False
+        
         super(forms.ModelForm, self).__init__(*args,**kwargs)#必须调用父类初始化其它数据
         
     class Meta:
@@ -77,16 +80,27 @@ class UserCreationForm(forms.ModelForm):
         except User.DoesNotExist:
             return name
         
-        self.name_hasExist = True
-        raise forms.ValidationError(_(u"该名号已存在"))
+        self.name_val_error = True
+        self.name_error = u'该名号已经被使用了'
+        raise forms.ValidationError(_(u"该名号已经被使用了"))
 
+    def clean_password1(self):
+        password1 = self.cleaned_data.get("password1", "")
+        if len(password1) < 6:
+            self.password1_val_error = True
+            self.password1_error = u'密码长度过短'
+            raise forms.ValidationError(_(u"密码长度过短"))
+
+        return password1
+    
     def clean_password2(self):
         password1 = self.cleaned_data.get("password1", "")
         password2 = self.cleaned_data["password2"]
         if password1 != password2:
+            self.password2_val_error = True
+            self.password2_error = u'两次输入的密码不一致'
             raise forms.ValidationError(_(u"两次输入的密码不一致"))
         
-        self.password_notMatch = False
         return password2
     
     def clean_email(self):
@@ -96,8 +110,9 @@ class UserCreationForm(forms.ModelForm):
         except User.DoesNotExist:
             return email
         
-        self.emial_hasExist = True
-        raise forms.ValidationError(_(u"该邮箱已存在"))
+        self.email_val_error = True
+        self.email_error = u'该邮箱已经注册过了'
+        raise forms.ValidationError(_(u"该邮箱已经注册过了"))
     
     def clean_invite_code(self):
         inv_code = self.cleaned_data["invite_code"]
@@ -111,7 +126,8 @@ class UserCreationForm(forms.ModelForm):
         except Invite_Code.DoesNotExist:
             pass
         
-        self.inv_code_validate_error = True
+        self.inv_code_val_error = True
+        self.inv_code_error = u'邀请码无效'
         raise forms.ValidationError(_(u"邀请码无效"))
         
     def save(self, commit=True):
@@ -233,17 +249,26 @@ class SetPasswordForm(forms.Form):
 
     def __init__(self, user, *args, **kwargs):
         self.user = user
-        self.password_notMatch = True#两次输入的密码是否匹配的标记
+        self.password1_val_error = False
+        self.password2_val_error = False
         super(SetPasswordForm, self).__init__(*args, **kwargs)
 
+    def clean_new_password1(self):
+        password1 = self.cleaned_data.get("new_password1", "")
+        if len(password1) < 6:
+            self.password1_val_error = True
+            self.password1_error = u'密码长度过短'
+            raise forms.ValidationError(_(u"密码长度过短"))
+
+        return password1
+    
     def clean_new_password2(self):
-        password1 = self.cleaned_data.get('new_password1')
-        password2 = self.cleaned_data.get('new_password2')
-        if password1 and password2:
-            if password1 != password2:
-                raise forms.ValidationError(_("The two password fields didn't match."))
-        
-        self.password_notMatch = False
+        password1 = self.cleaned_data.get("new_password1", "")
+        password2 = self.cleaned_data["new_password2"]
+        if password1 != password2:
+            self.password2_val_error = True
+            self.password2_error = u'两次输入的密码不一致'
+            raise forms.ValidationError(_(u"两次输入的密码不一致"))
         return password2
 
     def save(self, commit=True):

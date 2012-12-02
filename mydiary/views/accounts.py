@@ -52,9 +52,7 @@ def register(request):
                 {'request':request, 'register_success':True, 'username':user.name})#注册成功
         else:
             return render_to_response("accounts/register.html",
-                {'request':request, 'register_success':False, 'email_hasExist':form.emial_hasExist, 
-                'name_hasExist':form.name_hasExist, 'password_notMatch':form.password_notMatch,
-                'inv_code_does_not_exist':form.inv_code_validate_error,'p_email':request.POST['email'],
+                {'request':request, 'register_success':False, 'form_val':form,'p_email':request.POST['email'],
                 'p_invite_code':request.POST['invite_code'],'p_name':request.POST['name']})
     else:
         return render_to_response("accounts/register.html", {'request':request, 'register_success':False})
@@ -78,7 +76,7 @@ def profile(request):
             else:
                 
                 return render_to_response("accounts/profile.html", 
-                    {'user':user,'name_edited':True,'name_hasExist':form.name_hasExist,'request':request})
+                    {'user':user,'name_edited':True,'form_val':form,'request':request})
         else:
             return render_to_response("accounts/profile.html", 
                     {'user':user,'name_edited':False,'request':request})
@@ -102,8 +100,7 @@ def editpassword(request):
                 {'editpassword_success':True, 'request':request})#修改成功
         else:
             return render_to_response("accounts/editpassword.html",{'editpassword_success':False,
-                'password_notMatch':form.password_notMatch,'old_password_correct':form.old_password_correct,
-                'request':request})
+                'form_val':form,'old_password_correct':form.old_password_correct, 'request':request})
     else:
         return render_to_response("accounts/editpassword.html", 
                {'editpassword_success':False,'request':request,'old_password_correct':True})

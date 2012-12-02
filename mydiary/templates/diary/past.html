@@ -4,7 +4,7 @@
 <link href="/static/css/diary.css" rel="stylesheet" type="text/css" media="all" />
 {% endblock %}
 {% block content %}
-<div class="d-contentwrap">
+<div class="d-contentwrap d-past-contentwrap fleft">
 	<div class="d-content">
 		<div class="entry-list">
 			{% for log in log_list %}
@@ -19,5 +19,19 @@
 			{% endfor %}
 		</div>
 	</div>
+</div>
+
+<div class="d-past-slide fleft">
+	<div class="cleft blue-link mgn-btm5">
+	<a title="查看最近15条日志" href="{{request.HOME_PAGE_URL}}diary/past/">最近日志</a>
+	</div>
+	{% for ar_y in archive_list %}
+		<div class="cleft mgn-btm5">{{ar_y.year}}年({{ar_y.log_count}})</div>
+		{% for ar_m in ar_y.ar_m_list %}
+		<div class="blue-link cleft mgn-l18 mgn-btm5">
+		<a title="查看{{ar_m.month}}月的日志" href="{{request.HOME_PAGE_URL}}diary/past/{{ar_y.year}}/{{ar_m.month}}/">{{ar_m.month}}月({{ar_m.log_count}})</a>
+		</div>
+		{% endfor %}
+	{% endfor %}
 </div>
 {% endblock %}

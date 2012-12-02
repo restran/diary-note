@@ -10,31 +10,38 @@
 .d-contentwrap
 {
 	border-radius: 10px;
-border-width: 1px;
-padding: 1px;
-position: relative;
-margin:30px auto;
+	border-width: 1px;
+	padding: 1px;
+	position: relative;
+	margin:30px auto;
+	border-style: solid;
+	/*border-color: #F2F1EF;*/
+	border-color: #F2F2F2;
+	/*background-color: #DEDDDC;*/
+	background-color: #DEDDDC;
+	width: 650px;
+}
+.d-past-contentwrap {
+	margin-left:32px;
+}
+.d-content {
+	border-radius: 10px;
+	border-width: 3px;
+	padding-top: 38px;
+	padding-bottom: 21px;
+	position: relative;
 
-border-style: solid;
-/*border-color: #F2F1EF;*/
-border-color: #F2F2F2;
-/*background-color: #DEDDDC;*/
-background-color: #DEDDDC;
-width: 650px;
+	background-color: white;
+
+	border-style: solid;
+	border-color: #F7F7F7;
+	padding: 50px 42px;
 }
 
-.d-content {
-border-radius: 10px;
-border-width: 3px;
-padding-top: 38px;
-padding-bottom: 21px;
-position: relative;
-
-background-color: white;
-
-border-style: solid;
-border-color: #F7F7F7;
-padding: 50px 42px;
+.d-past-slide{
+	margin-left:70px;
+	margin-top:30px;
+	width:100px;
 }
 
 .bn-flat {

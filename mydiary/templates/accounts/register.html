@@ -20,8 +20,8 @@
     <div class="item">
     <label>邮箱</label>
     <input id="email" name="email" type="text" class="basic-input" maxlength="60" value={{ p_email }}>
-    {% if email_hasExist %}
-    <span class="validate-error">该邮箱已经注册过了</span>
+    {% if form_val.email_val_error %}
+    <span class="validate-error">{{form_val.email_error}}</span>
     {% else %}
     <span class="tip">用来登录时光里</span>
     {% endif %}
@@ -30,14 +30,18 @@
     <div class="item">
     <label>密码</label>
     <input id="password" name="password1" type="password" class="basic-input" maxlength="20">
+	{% if form_val.password1_val_error %}
+    <span class="validate-error">{{form_val.password1_error}}</span>
+    {% else %}
     <span class="tip">字母、数字或符号，最短6个字符，区分大小写</span>
+    {% endif %}
     </div>
     
     <div class="item">
     <label>确认密码</label>
     <input id="password" name="password2" type="password" class="basic-input" maxlength="20">
-    {% if password_notMatch %}
-    <span class="validate-error">两次输入的密码不一致</span>
+    {% if form_val.password2_val_error %}
+    <span class="validate-error">{{form_val.password2_error}}</span>
     {% else %}
     <span class="tip">请再次输入密码</span>
     {% endif %}
@@ -46,8 +50,8 @@
     <div class="item">
     <label>名号</label>
     <input id="name" name="name" type="text" class="basic-input" maxlength="15" value={{ p_name }}>
-    {% if name_hasExist %}
-    <span class="validate-error">该名号已经被使用了</span>
+    {% if form_val.name_val_error %}
+    <span class="validate-error">{{form_val.name_error}}</span>
     {% else %}
     <span class="tip">中、英文均可，最长14个英文或7个汉字</span>
     {% endif %}
@@ -56,8 +60,8 @@
 	<div class="item">
     <label>邀请码</label>
     <input id="invite_code" name="invite_code" type="text" class="basic-input" maxlength="60" value={{ p_invite_code }}>
-    {% if inv_code_does_not_exist %}
-    <span class="validate-error">邀请码无效</span>
+    {% if form_val.inv_code_val_error %}
+    <span class="validate-error">{{form_val.inv_code_error}}</span>
     {% else %}
     <span class="tip">邀请注册中</span>
     {% endif %}
