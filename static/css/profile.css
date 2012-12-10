@@ -31,9 +31,10 @@ a
 .message
 {
 	font-size: 14px;
-	font-weight: bold;
+	font-weight:bold;
 	border: 1px solid #FAF3CA;
 	padding:10px;
 	background: #FFFADC;
 	margin-bottom:10px;
+	width:350px;
 }

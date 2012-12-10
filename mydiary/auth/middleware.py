@@ -17,4 +17,5 @@ class AuthenticationMiddleware(object):
         assert hasattr(request, 'session')#需要安装session中间件
         request.__class__.user = LazyUser()
         request.__class__.HOME_PAGE_URL = settings.HOME_PAGE_URL#标记主页url
+        request.__class__.DOMAIN_URL = settings.DOMAIN_URL#标记域名url
         return None

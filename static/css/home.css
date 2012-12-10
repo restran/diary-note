@@ -1,0 +1,89 @@
+@charset "utf-8";
+/* CSS Document */
+.index_content {
+width: 660px;
+float: left;
+}
+
+.index_content_box {
+background: white;
+border: 1px solid #C9CACD;
+-webkit-border-radius: 6px;
+-moz-border-radius: 6px;
+margin-bottom: 20px;
+-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.index_introModel {
+padding: 30px 20px 20px;
+margin-bottom: 10px;
+}
+.index_introModel_pic {
+float: left;
+margin-right: 30px;
+}
+.index_introModel_text {
+font-size: 14px;
+/*font-family: "Hiragino Sans GB";*/
+line-height: 24px;
+color: #484847;
+}
+
+.clearfix {
+clear: both;
+}
+
+.sidebar {
+width: 270px;
+float: right;
+}
+
+.index_loginModel_header {
+padding:10px 20px;
+border-bottom: 1px solid #EEE;
+font-size: 16px;
+font-weight: bold;
+color: #0C7823;
+}
+
+h4 {
+font-size: 16px;
+font-weight: bold;
+color: #0C7823;
+}
+
+.input_box
+{
+	width: 160px;
+	padding: 5px;
+	height: 16px;
+	font-size: 14px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	border: 1px solid #C9C9C9;
+}
+
+label
+{
+	display: inline-block;
+	float: left;
+	margin-right: 10px;
+	text-align: right;
+	width: 50px;
+	font-size: 14px;
+	line-height: 28px;
+	vertical-align: middle;
+	/*border:1px dashed #0EE;*/
+}
+
+.item
+{
+	margin: 15px 0;
+}
+
+.bn_font{
+font-size:12px;
+font-weight:bold;
+}

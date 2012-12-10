@@ -3,7 +3,8 @@
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
-HOME_PAGE_URL = 'http://127.0.0.1:8000/'#主页的URL
+HOME_PAGE_URL = 'http://127.0.0.1:8008/'#主页的URL
+DOMAIN_URL = 'http://www.shiguangli.net/'#域名的URL
 ADMINS = (
     # ('Your Name', 'your_email@domain.com'),
 )
@@ -87,6 +88,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    os.path.join(os.path.dirname(__file__), 'templates').replace('\\','/'),
 )
 
 INSTALLED_APPS = (
@@ -99,12 +101,13 @@ INSTALLED_APPS = (
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
-    'mydiary',
+    'diary.mydiary',
+    'diary.rhtml5',
 )
 
 
 import logging
 logging.basicConfig(
-    level = logging.DEBUG,
-    format = '%(asctime)s %(levelname)s %(message)s',
+  level = logging.DEBUG, #设定DEBUG级别输出
+  format = '%(asctime)s %(levelname)s %(module)s.%(funcName)s Line:%(lineno)d %(message)s',
 )

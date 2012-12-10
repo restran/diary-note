@@ -53,7 +53,7 @@ class UserCreationForm(forms.ModelForm):
     """
     email = forms.EmailField(label=_("email"))
     name = forms.RegexField(max_length=14, regex=r'^\S+$',
-        help_text = _(u"中、英文均可，最长14个英文或7个汉字"),#前面必须加u表示unicode，django输出默认用unicode编码
+        help_text = _(u"中、英文均可，最长14个字符"),#前面必须加u表示unicode，django输出默认用unicode编码
         error_messages = {'invalid': _(u"仅可以使用中文或英文")})
     password1 = forms.CharField(widget=forms.PasswordInput)
     password2 = forms.CharField(widget=forms.PasswordInput)
@@ -74,7 +74,7 @@ class UserCreationForm(forms.ModelForm):
 
     #clean函数会按顺序自动执行
     def clean_name(self):
-        name = self.cleaned_data["name"]
+        name = self.cleaned_data["name"]     
         try:
             User.objects.get(name=name)
         except User.DoesNotExist:
@@ -119,9 +119,6 @@ class UserCreationForm(forms.ModelForm):
         try:
             code = Invite_Code.objects.get(code=inv_code)
             if code.is_actived == True:
-                code.used_count += 1
-                code.is_actived = False
-                code.save()
                 return inv_code
         except Invite_Code.DoesNotExist:
             pass
@@ -139,7 +136,7 @@ class UserCreationForm(forms.ModelForm):
 
 class UserChangeForm(forms.ModelForm):
     name = forms.RegexField(label=_("name"), max_length=14, regex=r'^\S+$',
-        help_text = _("中、英文均可，最长14个英文或7个汉字"),
+        help_text = _("中、英文均可，最长14个字符"),
         error_messages = {'invalid': _("仅可以使用中文或英文")})
     email = forms.EmailField(label=_("email"))
     

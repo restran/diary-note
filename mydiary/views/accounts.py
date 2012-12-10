@@ -12,10 +12,9 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from diary import settings
 from django.views.decorators.csrf import csrf_protect
+from diary.mydiary.models import Invite_Code
 
-#登录
-@csrf_protect
-def login(request):
+def login_method(request):
     if request.method == 'POST':
         email = request.POST.get('email', '')
         password = request.POST.get('password', '')
@@ -30,6 +29,11 @@ def login(request):
             return render_to_response("accounts/login.html", {'request':request, 'login_failed':True, 'p_email':email})
     else:
         return render_to_response("accounts/login.html", {'request':request, 'login_failed':False})
+    
+#登录
+@csrf_protect
+def login(request):
+    return login_method(request)
 
 #登出
 def logout(request):
@@ -39,15 +43,20 @@ def logout(request):
 #注册
 @csrf_protect
 def register(request):
-    from diary.mydiary.models import Invite_Code
-    code = Invite_Code()
-    code.gen_invit_code()
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()#将数据保存到数据库中
             user.save()
-
+            #邀请码可能同时被使用
+            try:
+                code = Invite_Code.objects.get(code=request.POST['invite_code'])
+                code.used_count += 1
+                code.is_actived = False
+                code.save()
+            except Invite_Code.DoesNotExist:
+                pass
+            
             return render_to_response("accounts/register.html",
                 {'request':request, 'register_success':True, 'username':user.name})#注册成功
         else:
@@ -62,7 +71,7 @@ def register(request):
 @csrf_protect
 def profile(request):
     if not request.user.is_authenticated():
-        return render_to_response('404.html')
+        return render_to_response('404.html', {'request':request})
   
     if request.method == 'POST':
         user = request.user
@@ -89,7 +98,7 @@ def profile(request):
 @csrf_protect
 def editpassword(request):
     if not request.user.is_authenticated():
-        return render_to_response('404.html')
+        return render_to_response('404.html', {'request':request})
     
     if request.method == 'POST':
         user = request.user

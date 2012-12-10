@@ -49,11 +49,11 @@
 
     <div class="item">
     <label>名号</label>
-    <input id="name" name="name" type="text" class="basic-input" maxlength="15" value={{ p_name }}>
+    <input id="name" name="name" type="text" class="basic-input" maxlength="14" value={{ p_name }}>
     {% if form_val.name_val_error %}
     <span class="validate-error">{{form_val.name_error}}</span>
     {% else %}
-    <span class="tip">中、英文均可，最长14个英文或7个汉字</span>
+    <span class="tip">中、英文均可，最长14个字符</span>
     {% endif %}
     </div>
 	

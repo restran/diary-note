@@ -13,7 +13,7 @@
 	border-width: 1px;
 	padding: 1px;
 	position: relative;
-	margin:30px auto;
+	margin:10px auto;
 	border-style: solid;
 	/*border-color: #F2F1EF;*/
 	border-color: #F2F2F2;
@@ -40,50 +40,10 @@
 
 .d-past-slide{
 	margin-left:70px;
-	margin-top:30px;
+	margin-top:10px;
 	width:100px;
 }
 
-.bn-flat {
-display: -moz-inline-box;
-display: inline-block;
-border-width: 1px;
-border-style: solid;
-border-color: #BBB #BBB #999;
-color: #444;
-border-radius: 3px;
--moz-border-radius: 3px;
--webkit-border-radius: 3px;
-overflow: hidden;
-vertical-align: middle;
-}
-
-.bn-flat input 
-{
-border: 0;
-height: 25px;
-padding: 0 14px;
-color: #333;
-
-font-size: 12px;
-margin: 0!important;
-cursor: pointer;
--webkit-appearance: none;
-border-radius: 2px;
--moz-border-radius: 2px;
--webkit-border-radius: 2px;
-background-image: -moz-linear-gradient(-90deg,#FCFCFC 0,#E9E9E9 100%);
-background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0,#FCFCFC),color-stop(1,#E9E9E9));
-}
-
-.bn-flat input:hover, .bn-flat input:focus, .bn-flat-over input 
-{
-color: #333!important;
-background-color: transparent!important;
-
-background-image: -moz-linear-gradient(-90deg,#F8F8F8 0,#DDD 100%);
-background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0,#F8F8F8),color-stop(1,#DDD));
-}
 
 .tab {
 position: absolute;

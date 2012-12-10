@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}时光里{% endblock %}
+
+{% block headerlink %}
+<link rel="stylesheet" href="style.css" type="text/css" media="screen" />
+<link href="/static/css/diary.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/static/css/home.css" rel="stylesheet" type="text/css" media="all" />
+{% endblock %}
+{% block content %}
+
+<div class="index_content">
+	<div class="index_content_box">
+		<div class="index_introModel">
+		<img src="/static/img/index_pic.png" class="index_introModel_pic">
+		<div class="index_introModel_text">
+		<h4>在时光的轨迹里 记录自己的故事</h4>
+		<p>很希望自己是一棵树，守静，向光，安然，敏感的神经末梢，触着流云和微风，窃窃的欢喜。脚下踩着最卑贱的泥，很踏实。还有，每一天都在隐秘成长。</p>
+		<p>——黎戈《私语书》</p>
+		</div>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+<div class="sidebar">
+<div class="index_content_box index_loginModel">
+	<div class="index_loginModel_header">用户登录</div>
+	<form name="loginform" method="post" action="">{% csrf_token %}	
+		<div class="item">
+		<label>邮箱</label>
+		<input id="email" name="email" type="text" class="input_box" maxlength="60" value={{ p_email }}>
+		</div>
+
+		<div class="item">
+		<label>密码</label>
+		<input id="password" name="password" type="password" class="input_box" maxlength="20">
+		</div>
+		
+		<div class="item bn-flat" style="margin-left:175px">
+		<input type="submit" value="登录" id="button" class="bn_font" title="登录时光里">
+		</div>
+	</form>
+</div>
+</div>
+
+{% endblock %}

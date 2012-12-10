@@ -22,6 +22,10 @@ urlpatterns = patterns('',
 #元组是可累加的，但累加后是生成新的元组，而非在原来的基础上修改
 urlpatterns += patterns('diary.mydiary.views',#第一个参数可设置公共前缀
     (r'^$', 'home.index'),#当设置公共前缀时，应使用字符串
+    (r'^gen_inv_code/(?P<count>\d{1})/$', 'home.gen_inv_code'),#一次可生成的邀请码格式0～9
+)
+
+urlpatterns += patterns('diary.mydiary.views',#第一个参数可设置公共前缀
     (r'^accounts/login/$', 'accounts.login'),
     (r'^accounts/logout/$', 'accounts.logout'),
     (r'^accounts/register/$', 'accounts.register'),
@@ -33,5 +37,13 @@ urlpatterns += patterns('diary.mydiary.views',#第一个参数可设置公共前
     (r'^diary/write/$', 'diarybook.write'),
     (r'^diary/past/$', 'diarybook.past'),
     (r'^diary/past/(?P<year>\d{4})/(?P<month>\d{2})/$', 'diarybook.past_year_month'),
+)
+
+urlpatterns += patterns('diary.rhtml5.views',
+    (r'^rhtml5/fireworks/$', 'fireworks'),
+    (r'^rhtml5/hny2012/$', 'hny2012'),
+)
+
+urlpatterns += patterns('diary.mydiary.views',
     (r'^', 'home.error_404'),
 )

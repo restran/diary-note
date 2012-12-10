@@ -35,4 +35,6 @@ class Invite_Code(models.Model):
                 self.code = str
                 self.save()
                 break
+            
+        return str
 
