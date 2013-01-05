@@ -90,7 +90,7 @@ def past_year_month(request, year, month):
     if not request.user.is_authenticated():
         return HttpResponseRedirect(settings.HOME_PAGE_URL)#跳转到主页面
     
-    log_list = Log.objects.filter(user=request.user, date_posted__year=int(year),date_posted__month=int(month)).order_by('-date_posted')[0:15]#加-号表示逆向排序
+    log_list = Log.objects.filter(user=request.user, date_posted__year=int(year),date_posted__month=int(month)).order_by('-date_posted')#加-号表示逆向排序
     for log in log_list:
         log.date_posted_str = log.date_posted.strftime('%Y/%m/%d, %A, %H:%M')
     

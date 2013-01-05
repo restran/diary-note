@@ -36,7 +36,7 @@ urlpatterns += patterns('diary.mydiary.views',#第一个参数可设置公共前
 urlpatterns += patterns('diary.mydiary.views',#第一个参数可设置公共前缀
     (r'^diary/write/$', 'diarybook.write'),
     (r'^diary/past/$', 'diarybook.past'),
-    (r'^diary/past/(?P<year>\d{4})/(?P<month>\d{2})/$', 'diarybook.past_year_month'),
+    (r'^diary/past/(?P<year>\d{4})/(?P<month>\d{1,2})/$', 'diarybook.past_year_month'),
 )
 
 urlpatterns += patterns('diary.rhtml5.views',

@@ -29,7 +29,7 @@ def gen_inv_code(request, count):
     if request.user.is_authenticated() and request.user.name == 'restran':
         from diary.mydiary.models import Invite_Code
         count = int(count)
-        str = u'成功生成%s个邀请码:)' % (count)
+        str = u'成功生成%s个邀请码:)' % count
         for i in range(count):
             code = Invite_Code()
             str += '<br>' + code.gen_invit_code()#生成邀请码

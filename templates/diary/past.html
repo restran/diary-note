@@ -11,11 +11,9 @@
 			<div class="entry mgn-btm20">
 				<div class="tab">{{ log.no }}</div>
 				<div class="time">{{ log.date_posted_str }}</div>
-				<div class="text">{{ log.content }}</div>
+				<div class="text">{{ log.content|linebreaks }}</div>
 			</div>
-			{% if log.no > 1 %}
 			<div class="border_line mgn-btm30 mgn-top30"></div>
-			{% endif %}
 			{% endfor %}
 		</div>
 	</div>
